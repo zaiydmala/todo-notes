@@ -13,11 +13,78 @@
 </head>
 <body>
     <header class="logoArea">
-
+        <div class="hiddenMenu">
+            <span class="material-icons-round">menu</span>
+        </div>
+        <div class="logoLeft">
+            <img src="./images/check_logo.png" alt="check logo">
+            <div class="logoText"><span>What</span>ToDo</div>
+        </div>
+        <div class="theme">
+            <input type="checkbox" class="checkbox" id="checkbox" checked = "true">
+            <label for="checkbox" class="label">
+                <img class="sun" src="images/sun.png">
+                <span class="material-icons-round moon">dark_mode</span>
+                <div class="ball"></div>
+            </label>
+        </div>
     </header>
-
-
     <div class="content">
+        <div class="leftPanel">
+            <div class="home">
+                <h2>Home</h2>
+                <div class="tile selected" id="allTasks">
+                    <img src="images/inbox.png" alt="inbox">
+                    <div data-name>All Tasks</div>
+                </div>
+                <div class="tile" id="today">
+                    <img src="images/today1.png" alt="today">
+                    <div data-name>Today</div>
+                </div>
+                <div class="tile" id="thisWeek">
+                    <img src="images/week2.png">
+                    <div data-name>Next 7 Days</div>
+                </div>
+                <div class="tile" id="important">
+                    <img src="images/star.png" alt="star">
+                    <div data-name>Important</div>
+                </div>
+            </div>
+            <div class="project">
+                <h2>Projects</h2>
+                <form id="projectForm" class="hidden" autocomplete="off">
+                    <div class="projectIcon">
+                        <span class="material-icons-round">menu</span>
+                    </div>
+                    <div class="inputField">
+                        <input type="text" id="projectInput" placeholder="Enter Project Name" maxlength="24">
+                        <div class="formButtons">
+                            <input type="submit" class="projectSubmitBtn" value="Add">
+                            <input type="button" class="projectCancelBtn" value="Cancel">
+                        </div>
+                    </div>
+                </form>
+                <button id="addProject"><span class="material-icons-round">add_circle_outlined</span>Add Project</button>
+                <!-- hidden pop up option -->
+                <div class="option hidden" id="projectOption">
+                    <button>Rename</button>
+                    <button>Delete</button>
+                </div>
+                <!-- hidden pop up form -->
+                <form id="renameForm" class="hidden" autocomplete="off">
+                    <div class="projectIcon">
+                        <span class="material-icons-round">menu</span>
+                    </div>
+                    <div class="inputField">
+                        <input type="text" id="projectRenameInput" maxlength="24">
+                        <div class="formButtons">
+                            <input type="submit" class="rename-renameBtn" value="Rename">
+                            <input type="button" class="rename-cancelBtn" value="Cancel">
+                        </div>
+                    </div>
+                </form>
+            </div>    
+        </div>
 
     </div>
 
