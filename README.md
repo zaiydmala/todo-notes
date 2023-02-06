@@ -5,7 +5,7 @@
  
  # Features
   
- - add projects + rename projects
+ - Add projects + rename projects
  - Drag and drop deature to change order of projects
  - Left panel can be minimized
  - Add tasks into your projects (title, details, due-date) + edit them
