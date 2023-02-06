@@ -1,7 +1,7 @@
 import { addDays, format, isEqual, isWithinInterval } from "date-fns";
 import parseISO from "date-fns/parseISO";
-import { projectList, hideAddTaskBtn } from "./creatingProject";
-import { addTask } from "./creatingTask";
+import { projectList, hideAddTaskBtn } from "./createProject";
+import { addTask } from "./createTask";
 
 function checkWhichHomeTile(homeTile){
     if(homeTile.matches("#allTasks")){
@@ -94,6 +94,25 @@ function displayImportant(){
         });
     });
     checkNoTask();
+}
+
+function checkNoTask(){
+    const ul = document.querySelector("ul");
+    if(ul.textContent === ""){
+        showNoTask();
+    }
+    else{
+        return;
+    }
+}
+
+function showNoTask(){
+    const ul = document.querySelector("ul");
+    const div = document.createElement("div");
+    div.classList.add("noTask");
+    div.textContent = "Yay! No Tasks!";
+    ul.appendChild(div);
+    
 }
 
 

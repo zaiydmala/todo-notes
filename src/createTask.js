@@ -1,4 +1,6 @@
-import {projectList, createSpanIcon, saveToLocalStorage} from "./creatingProject"
+import {projectList, createSpanIcon, saveToLocalStorage} from "./createProject"
+import {styleCompletedTask, updateCompletedTask,styleImportantTask, updateImportantTask ,deleteTask,showEditForm,
+        revertEditFormLocation, processEditTask, showHiddenTask} from "./editTask"
 
 function listEvent(){
     const addList = document.querySelector("#addList");
@@ -126,3 +128,82 @@ function displayTask(dataProject){
         addTask(task.id, task.title, task.details, task.date, task.completed, task.important);
     });
 }
+
+//create the task into HTML
+function addTask(listId, title, details, date, completed, important){
+    const ul = document.querySelector("ul");
+    const li = document.createElement('li');
+    li.id = listId;
+    ul.appendChild(li);
+
+    const unchecked = document.createElement('div');
+    unchecked.classList.add("unchecked");
+    li.appendChild(unchecked);
+
+    const listDetails = document.createElement("div");
+    listDetails.classList.add("list-details");
+    li.appendChild(listDetails);
+
+    if(completed){
+        unchecked.classList.toggle("checked");
+        listDetails.classList.toggle("lineThrough");
+        listDetails.classList.toggle("fade");
+    }
+
+    const taskTitle = document.createElement('div');
+    taskTitle.classList.add("taskTitle");
+    taskTitle.textContent = title;
+    listDetails.appendChild(taskTitle);
+
+    const taskDetails = document.createElement('div');
+    taskDetails.classList.add("taskDetails");
+    taskDetails.textContent = details;
+    listDetails.appendChild(taskDetails);
+
+    const dateDiv = document.createElement('div');
+    dateDiv.classList.add("date");
+    dateDiv.textContent = date;
+    li.appendChild(dateDiv);
+
+    const listRight = document.createElement('div');
+    listRight.classList.add("list-right");
+    li.appendChild(listRight);
+
+    const starOutline = createSpanIcon("star_outline");
+    starOutline.classList.add("star-outline");
+    listRight.appendChild(starOutline);
+
+    const star = createSpanIcon("star");
+    star.classList.add("important");
+    listRight.appendChild(star);
+
+    if(important){
+        starOutline.classList.add("listHidden");
+    }
+    else{
+        star.classList.add("listHidden");
+    }
+
+    const editContainer = document.createElement('div');
+    editContainer.dataset.dropdown = "";
+    editContainer.classList.add("editContainer");
+    listRight.appendChild(editContainer);
+
+    const threeDots = createSpanIcon("more_vert");
+    threeDots.dataset.dropdownButton = "";
+    editContainer.appendChild(threeDots);
+}
+
+//update the title of the content (right panel heading)
+function updateTitle(nameNode){
+    const title = document.querySelector(".title");
+    title.textContent = nameNode.textContent;
+}
+
+//function to find the data-project index when adding new tasks
+function findCurrentDataProject(){
+    const selected = document.querySelector(".selected");
+    return selected.dataset.project;
+}
+
+export {updateTitle, listEvent, displayTask, id, addTask, processDateData};

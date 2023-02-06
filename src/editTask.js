@@ -1,6 +1,7 @@
-import { projectList, saveToLocalStorage } from "./creatingProject";
-import { displayTask, processDateData } from "./creatingTask";
-import { checkWhichHomeTile } from "./homeSection";
+import { projectList, saveToLocalStorage } from "./createProject";
+import { displayTask, processDateData } from "./createTask";
+import { checkWhichHomeTile } from "./home";
+import { hideDropDown, revertOptionLocation } from "./editProject";
 
 //style completed task
 function styleCompletedTask(e){
@@ -115,3 +116,44 @@ function showEditForm(e){
 
     document.getElementById("editListTitle").focus();
 }
+
+//move the edit form in place of the task you want to edit
+function relocateEditListForm(e){
+    let listNode = e.target.closest("li");
+    let ul = listNode.parentNode;
+
+    const editListForm = document.getElementById("editListForm");
+    const taskTitle = listNode.querySelector(".taskTitle").textContent;
+    const taskDetails = listNode.querySelector(".taskDetails").textContent;
+    const taskDate = listNode.querySelector(".date").textContent;
+    
+    const titleInput = editListForm.querySelector("#editListTitle");
+    const detailInput = editListForm.querySelector("#editListInputDetail");
+    const dateInput = editListForm.querySelector("#editListInputDate");
+
+    titleInput.value = taskTitle;
+    detailInput.value = taskDetails;
+    dateInput.value = taskDate;
+
+    listNode.classList.add("hidden");
+    editListForm.classList.remove("hidden");
+    ul.insertBefore(editListForm, listNode);
+}
+
+//move form from under the edited list to outside ul for standby
+function revertEditFormLocation(){
+    const editForm = document.querySelector("#editListForm");
+    const listToDo = document.querySelector(".list-todo");
+
+    editForm.classList.add("hidden");
+    listToDo.appendChild(editForm);
+}
+
+//show the hidden task that was hidden during edit mode
+function showHiddenTask(){
+    const hiddenTask = document.querySelector("li.hidden");
+    hiddenTask.classList.remove("hidden");
+}
+
+export {styleCompletedTask,styleImportantTask , updateCompletedTask, updateImportantTask 
+        ,deleteTask, showEditForm,relocateEditListForm, revertEditFormLocation, processEditTask, showHiddenTask}

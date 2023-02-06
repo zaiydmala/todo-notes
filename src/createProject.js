@@ -1,5 +1,8 @@
-import { checkWhichHomeTile } from "./homeSection";
-import { displayTask, updateTitle, id} from "./creatingTask";
+import { checkWhichHomeTile } from "./home";
+import { displayTask, updateTitle, id} from "./createTask";
+import { revertEditFormLocation } from "./editTask";
+import { revertOptionLocation } from "./editProject";
+import { dragStartEndEvent } from "./dragAndDrop";
 
 const createEventListener = () =>{
     //event listener for creating a form for adding projects
@@ -170,3 +173,13 @@ function checkTile(e){
         return;
     }
 }
+
+//when selecting a tile from left panel apply css
+const selectTile = (node) =>{
+    const selectedTile = document.querySelector(".selected");   
+    selectedTile.classList.remove("selected");                  //remove class selected from old tile
+
+    node.classList.add("selected");                             //add class selected to current tile
+}
+
+export {createEventListener, createSpanIcon, projectList, saveToLocalStorage, hideAddTaskBtn};
