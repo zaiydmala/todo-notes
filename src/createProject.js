@@ -123,3 +123,50 @@ const createSpanIcon = (name) => {
     icon.textContent = name;
     return icon;
 }
+
+//find next data-set
+const findNextDataset = () => {
+    const allprojects = document.querySelectorAll("[data-project]");
+    return allprojects.length;
+}
+
+// remove add task Btn when homeTiles is selected
+function hideAddTaskBtn(){
+    const addTaskBtn = document.getElementById("addList");
+    addTaskBtn.classList.add("hidden");
+}
+//show addTaskBtn when prject tile
+function showAddTaskBtn(){
+    const addTaskBtn = document.getElementById("addList");
+    addTaskBtn.classList.remove("hidden");
+
+}
+
+//check to see what tile is selected
+function checkTile(e){
+    let homeTile = e.target.closest(".home .tile");
+    let projectTile = e.target.closest(".project .tile");
+    if(homeTile != null){
+        const title = homeTile.querySelector("[data-name]");
+        selectTile(homeTile);
+        revertOptionLocation();
+        checkWhichHomeTile(homeTile);
+        updateTitle(title);
+        hideAddTaskBtn();
+    }
+    else if(projectTile != null){
+        const title = projectTile.querySelector(".projectName");
+        let dataProject = projectTile.dataset.project;
+        
+        revertEditFormLocation();               //move form or option of task to original place on standby.   
+        revertOptionLocation();
+
+        displayTask(dataProject);
+        selectTile(projectTile);
+        updateTitle(title);
+        showAddTaskBtn();
+    }
+    else{
+        return;
+    }
+}

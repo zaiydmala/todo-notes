@@ -1,3 +1,8 @@
+import { addDays, format, isEqual, isWithinInterval } from "date-fns";
+import parseISO from "date-fns/parseISO";
+import { projectList, hideAddTaskBtn } from "./creatingProject";
+import { addTask } from "./creatingTask";
+
 function checkWhichHomeTile(homeTile){
     if(homeTile.matches("#allTasks")){
         displayAllTasks();
@@ -74,6 +79,23 @@ function checkNextWeek(taskDate){
         end: nextWeekPlus1
     });
 }
+
+//display important tasks
+function displayImportant(){
+    clearContent();
+    projectList.forEach((project) =>{
+        project.taskList.forEach((task) => {
+            if(task.important){
+                addTask(task.id, task.title, task.details, task.date,task.completed, task.important);
+            }
+            else{
+                return;
+            }
+        });
+    });
+    checkNoTask();
+}
+
 
 
 
