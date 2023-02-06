@@ -1,4 +1,5 @@
 import { checkWhichHomeTile } from "./homeSection";
+import { displayTask, updateTitle, id} from "./creatingTask";
 
 const createEventListener = () =>{
     //event listener for creating a form for adding projects

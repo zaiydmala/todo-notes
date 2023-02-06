@@ -74,3 +74,9 @@ function checkNextWeek(taskDate){
         end: nextWeekPlus1
     });
 }
+
+
+
+
+
+export {checkWhichHomeTile, displayAllTasks}
