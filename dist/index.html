@@ -85,14 +85,56 @@
                 </form>
             </div>    
         </div>
-
+        <div id="rightPanel" class="rightPanel">
+            <div class="title">All Tasks</div>
+            <div class="list-todo">
+                <ul>
+                </ul>
+                <!-- hidden pop up option -->
+                <div class="option hidden" id="listOption">
+                    <button id="listEdit">Edit</button>
+                    <button id="listDelete">Delete</button>
+                </div>
+                <!-- hidden pop up edit task form  -->
+                <form id="editListForm" class="hidden" autocomplete="off">
+                    <div class="inputField">
+                        <label>Title:</label>
+                        <input type="text" id="editListTitle" placeholder="What to do?">
+                        <label>Details(optional):</label>
+                        <textarea type="text" id="editListInputDetail" placeholder="eg: I'm just gonna procrastinate, aren't I?" wrap="hard"></textarea>
+                        <label>Date:</label>
+                        <input type="date" id="editListInputDate" >
+                        <div class="formButtons">
+                            <input type="submit" class="editTaskSubmitBtn" value="Add">
+                            <input type="button" class="editTaskCancelBtn" value="Cancel">
+                        </div>
+                    </div>
+                </form>
+                <!-- hidden pop up adding task form -->
+                <form id="listForm" class="hidden" autocomplete="off">
+                    <div class="inputField">
+                        <label>Title:</label>
+                        <input type="text" id="listInput" placeholder="What to do?">
+                        <label>Details(optional):</label>
+                        <textarea type="text" id="listInputDetail" placeholder="eg: I'm just gonna procrastinate, aren't I?" wrap="hard"></textarea>
+                        <label>Date:</label>
+                        <input type="date" id="listInputDate" >
+                        <div class="formButtons">
+                            <input type="submit" class="listSubmitBtn" value="Add">
+                            <input type="button" class="listCancelBtn" value="Cancel">
+                        </div>
+                    </div>
+                </form>
+                <button id="addList"><span class="material-icons-round">add_circle_outlined</span>Add Task</button>
+            </div>
+        </div>
     </div>
-
     <footer>
         <div>Icons by <a target="_blank" href="https://icons8.com">Icons8</a></div>
         |
-        <a href="https://github.com/zaiydmala/todo-notes"><img src="./images/github.png"></a>
+        <a href="https://github.com/zaiydmala"><img src="./images/github.png"></a>
+        |
+        <div>2021 &copy khunhour</div>
     </footer>
-
 </body>
 </html>
